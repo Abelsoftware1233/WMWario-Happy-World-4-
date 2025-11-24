@@ -20,9 +20,9 @@ html, body {
 
 /* Stijlen voor de body (de hoofdcontainer) */
 body {
-	background-color: #000000; /* Zwart als fallback, maar de afbeelding zal het vullen */
+	background-color: #000000; /* De zwarte randen komen nu van de body zelf */
 	background-image: url('images/background.png'); /* Je achtergrondafbeelding */
-	background-size: cover; /* Zorgt ervoor dat de achtergrond het hele element bedekt */
+	background-size: contain; /* NIEUW: Zorgt ervoor dat de hele afbeelding zichtbaar is en niet te breed wordt */
 	background-position: center bottom; /* Centreert de afbeelding en plaatst de onderkant op de onderkant van de body */
 	background-repeat: no-repeat; /* Voorkomt herhaling van de afbeelding */
 	position: relative; /* Belangrijk: Maakt de body de positioneringscontext voor absoluut gepositioneerde elementen */
