@@ -48,3 +48,25 @@ html {
 .tube {
 	background-repeat: no-repeat, repeat-y;
 }
+
+/* ==========================================================
+   MEDIA QUERIES
+   ========================================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 8vw;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    
+    h1 {
+        font-size: 5vh; 
+    }
+
+    .fireball {
+        width: 8vh; 
+        height: 8vh; 
+    }
+}
