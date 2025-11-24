@@ -1,5 +1,5 @@
 # Super Mario World Engine in JavaScript
-Super Mario World JS was a project for a college-level Programming Paradigms course.
+Super Mario World.
 
 It implements a View-Model-Controller architecture with a redux-style Model that accepts actions that are fed through a reducer.
 
@@ -16,8 +16,6 @@ _Space_ makes Mario jump.
 ## Sponsor 💗
 
 If you are a fan of this project, you may
-[become a sponsor](https://github.com/sponsors/CharlesStover)
-via GitHub's Sponsors Program.
+[become a sponsor](https://github.com/sponsors/abelsoftware1233
 
-## Demo
-* [GitHub Pages](https://charlesstover.github.io/super-mario-world-js/)
+www.abelsoftware123.com
