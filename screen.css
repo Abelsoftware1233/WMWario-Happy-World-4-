@@ -1,49 +1,132 @@
-/* ... Keyframes en html, body stijlen blijven hetzelfde ... */
+/* Keyframes voor de animatie van de fireball */
+@keyframes fireball {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
-/* Stijlen voor de body (alleen de zwarte achtergrond) */
+/* Algemene stijlen voor de HTML en BODY om het hele scherm te vullen */
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden; /* Voorkomt scrollbalken */
+	box-sizing: border-box; 
+}
+
+/* De body fungeert als de zwarte achtergrond voor de randen op brede schermen */
 body {
-	background-color: #000000; /* Zwarte achtergrond voor de randen op brede schermen */
+	background-color: #000000; 
 	position: relative; 
 }
 
-/* NIEUW: De container die de achtergrondafbeelding vasthoudt */
+/* NIEUW: De Game Container is de virtuele 'scène' die de achtergrond en Mario bevat */
 .game-container {
-    /* Positionering en schaling om de achtergrondafbeelding te imiteren */
+    /* Zorgt ervoor dat de container het hele scherm vult */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto; /* Zorgt voor automatische centrering */
     
-    /* De afbeelding en positie van de achtergrond */
+    /* Zorgt voor centrering als de container niet de volledige breedte of hoogte gebruikt */
+    margin: auto; 
+    
+    /* De achtergrondafbeelding en positionering */
     background-image: url('images/background.png'); 
-    background-size: contain; /* Zorgt ervoor dat de afbeelding schaalt en past */
-    background-position: center bottom; /* Plaats de onderkant van de afbeelding op de onderkant van de container */
-    background-repeat: no-repeat;
+    background-size: contain; /* Zorgt ervoor dat de hele afbeelding schaalt en past (zonder uitrekken) */
+    background-position: left bottom; /* Startpositie: links onderin (voor JavaScript beweging) */
+    background-repeat: no-repeat; 
     
-    /* BELANGRIJK: Bepaalt de hoogte van de container op basis van de breedte, 
-       wat nodig is voor de 'contain' property. */
-    /* De 56.25% is gebaseerd op een 16:9 ratio (9/16 * 100).
-       Je moet dit aanpassen als je achtergrondafbeelding een andere verhouding heeft. */
-    /* Alternatieve en eenvoudigere aanpak: */
+    /* BELANGRIJK: Zorgt ervoor dat de container zich gedraagt als een referentiepunt */
+    position: relative; 
+    
+    /* Deze afmetingen zijn nodig zodat de achtergrond de beschikbare ruimte in de body kan vullen */
     width: 100%;
-    height: 100%; /* Begin met 100% en laat de achtergrond de schaling doen */
+    height: 100%; 
 }
 
 /* Stijlen voor de fireball (Mario) */
 .fireball {
-    /* ... animatie stijlen blijven hetzelfde ... */
-	position: absolute; /* Nu absoluut t.o.v. .game-container */
+    /* Animatie stijlen */
+	animation-delay: 0s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-name: fireball;
+	animation-timing-function: linear;
+    
+    /* Uiterlijk en grootte */
+	background-image: url('images/fireball.gif'); 
+	background-repeat: no-repeat;
+	background-size: contain; 
 	
-	/* De 10% bottom is nu ten opzichte van de HOOGTE van de .game-container, 
-       die de achtergrondafbeelding is. Dit zou Mario op de grond moeten plaatsen. */
+    /* Positionering t.o.v. .game-container */
+	position: absolute; 
+	
+	/* BELANGRIJK: Pas deze waarde aan (bijv. 8% of 12%) totdat Mario perfect 
+       op de grond van de achtergrondafbeelding staat. */
 	bottom: 10%; 
+	
+    /* Mario start links op het scherm */
 	left: 20%;   
 	transform: translateX(-50%); 
 	
+	/* Grootte van de fireball */
 	width: 10vh; 
 	height: 10vh; 
 }
 
-/* ... de rest van de h1 en media queries blijven hetzelfde ... */
+/* Stijlen voor de h1 (Loading tekst) */
+h1 {
+	align-items: center;
+	display: flex;
+	font-family: sans-serif;
+	justify-content: center;
+	height: 100%;
+	margin: 0;
+	color: white; 
+	position: absolute; 
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10; 
+}
+
+/* Stijlen voor tube (indien gebruikt) */
+.tube {
+	background-repeat: no-repeat, repeat-y; 
+}
+
+/* ==========================================================
+   media queries
+   ========================================================== */
+
+/* Kleinere schermen/mobiel */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 8vw; 
+    }
+    .fireball {
+        width: 12vw; 
+        height: 12vw;
+        bottom: 8%; /* Fijn afstellen voor mobiel */
+    }
+}
+
+/* Liggende oriëntatie (landscape) met kleine hoogte */
+@media (orientation: landscape) and (max-height: 500px) {
+    
+    h1 {
+        font-size: 5vh; 
+    }
+
+    .fireball {
+        width: 8vh; 
+        height: 8vh; 
+        bottom: 5%; /* Fijn afstellen voor landscape */
+    }
+}
